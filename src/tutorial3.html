@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app3" ng-cloak>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS Tutorial</title>
+
+    <!-- style at directive cloak responsible for not showing the {{}} during load to the user -->
+    <style>
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display:none;
+        }
+    </style>
 </head>
 <body>
 
+    <div id="groceryList" ng-controller="gListCtrl">
+        <h3 class="ListTitle">{{groceries.length}} Groceries to get</h3>
+
+        <!-- alternative way of binding: -->
+        <!-- <h3 class="ListTile">
+                <span ng-bind="groceries.length"></span> Groceries to get
+             </h3> -->
+
+        <ol>
+            <li>{{groceries[0].item}}</li>
+        </ol>
+
+        <ol start="2">
+            <li ng-repeat="grocery in groceries" ng-if="$index > 0">
+            {{grocery.item}} {{$index}}
+            </li>
+        </ol>
+
+
+        <table>
+            <tr ng-repeat-start="grocery in groceries">
+                <td>{{grocery.item}}</td>
+            <tr ng-repeat-end>
+                <td>{{grocery.purchased}}</td>
+            </tr>
+            </tr>
+        </table>
+
+
+        <!-- two way binding -->
+
+        <label for="">Change the frist item:</label>
+        <input type="text" ng-model="groceries[0].item">
+    </div>
+
+
+
     <script src="../js/angular.js"></script>
+    <script src="../js/example3.js"></script>
 </body>
 </html>
