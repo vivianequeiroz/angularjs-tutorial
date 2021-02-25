@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--ng-init: initialize page data associated to variables-->
+<html lang="en" ng-app='app1' ng-init="person = {firstName: 'Viviane', lastName: 'Queiroz'};
+capitals = [{city: 'São Paulo', state: 'São Paullo'}, {city: 'Niterói', state: 'Rio de Janeiro'}, 
+{city: 'Mariana', state: 'Minas Gerais'}]"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +10,37 @@
     <title>AngularJS Tutorial</title>
 </head>
 <body>
+    <!--$scope component provide data to the view -->
+    <div ng-controller="ctrl1">
+        <span>Values:</span>
+        <input type="text" ng-model="first"/>
+        <input type="text" ng-model="second"/>
+        
+        <button ng-click="updateValue()">Sum</button>
+        <br><br>
+
+        <!-- Different ways to apply data-binding: -->
+
+        {{calculation}}
+
+        <p> 5 + 5 = {{5 + 5}}</p>
+
+        <p>Your first value is {{first}}</p>
+
+        <p>Your second value is 
+            <span data-ng-bind="second"></span>
+        </p>
+
+        <p>{{person.firstName + " " + person.lastName}} you entered {{first + " and " + second}}</p>
+
+        <ul>
+            <li ng-repeat="capital in capitals">
+                {{'City: ' + capital.city + ', State: ' + capital.state}}
+            </li>
+        </ul>
+    </div>
 
     <script src="../js/angular.js"></script>
+    <script src="../js/example1.js"></script>
 </body>
 </html>
