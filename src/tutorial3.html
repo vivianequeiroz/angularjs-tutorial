@@ -48,6 +48,31 @@
 
         <label for="">Change the frist item:</label>
         <input type="text" ng-model="groceries[0].item">
+
+
+        <h3>Grocery List</h3>
+            <div ng-include="'ol-grocery-list.html'"></div>
+
+            <label>
+                <input type="checkbox" ng-model="showList">
+                Show unordered list
+            </label>
+            
+            <ng-include src="getList()"></ng-include>
+
+
+            <label>Type a number (1 to 4)
+                <input type="text" ng-model="someNumber"/>
+            </label>
+
+            <div ng-switch="someNumber">
+                <p ng-switch-when="1">You entered 1</p>
+                <p ng-switch-when="2">You entered 2</p>
+                <p ng-switch-when="3">You entered 3</p>
+                <p ng-switch-when="4">You entered 4</p>
+                <p ng-switch-default="1">Not following directions</p>
+                
+            </div>
     </div>
 
 
