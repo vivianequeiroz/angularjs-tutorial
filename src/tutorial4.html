@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" ng-app="app4" ng-cloak>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AngularJS Tutorial</title>
+    <title>AngularJS Tutorial - Adding or removing elements</title>
+    <style>
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none;
+        }
+        .bluetext {
+            color: blue;
+        }
+        .boldtext {
+            font-weight: bold;
+        }
+        .stripedblue {
+            color: #007FFF;
+            background-color: #DBE9F4;
+        }
+        .stripedbeige {
+            color: #CC0000;
+            background-color: #F5F5DC;
+        }
+    </style>
 </head>
 <body>
+    <!-- <div ng-controller="eventCtrl">
+
+        <input ng-blur="blur = blur + 1"
+        ng-click="click = click + 1"/>
+
+        <h4>Blur events: {{blur}}</h4>
+        <h4>Click events: {{click}}</h4> 
+    </div> -->
+
+    <div ng-controller="eventCtrl">
+
+        <p>
+            <button ng-disabled="disableButton">Button</button>
+        </p>
+
+        <p>
+            <input type="checkbox" ng-model="disableButton">
+            Disable button here!
+        </p>
+
+
+        <!-- dinamically changing classes -->
+        <p>
+            <select ng-model="textStyling">
+                <option value="bluetext">Blue text</option>
+                <option value="boldtext">Bold text</option>
+            </select>
+        </p>
+
+        <p ng-class="textStyling">Som random text</p>
+
+    </div>
+
 
     <script src="../js/angular.js"></script>
+    <script src="../js/example4.js"></script>
 </body>
 </html>
