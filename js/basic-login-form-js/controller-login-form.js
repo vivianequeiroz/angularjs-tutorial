@@ -5,7 +5,14 @@ app.config(function($routeProvider) {
     .when('/', {
         templateUrl: 'login-form.html'
     })
-    .when('/login',{
+    .when('/dashboard', {
+        resolve: {
+            "check": function($location, $rootScope) {
+                if(!$rootScope.loggedIn) {
+                    $location.path('/');
+                }
+            }
+        },
         templateUrl: 'dashboard.html'
     })
     .otherwise({
@@ -13,14 +20,13 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller('loginCtrl', function($scope) {
+app.controller('loginCtrl', function($scope, $location, $rootScope) {
     $scope.submit = function() {
-        var username = $scope.username;
-        var password = $scope.password;
-        if($scope.username == 'admin' && $scope.password) {
+        if($scope.username == 'admin' && $scope.password == 'admin') {
+            $rootScope.loggedIn = true;
             $location.path('/dashboard');
         } else {
             alert('Wrong information. Please, try again.');
         }
     };
-})
+});
