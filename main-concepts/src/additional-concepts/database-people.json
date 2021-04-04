@@ -1,0 +1,20 @@
+{
+    "records": [
+        {
+            "Name": "Joao",
+            "Age": 50   
+        },
+        {
+            "Name": "Sofia",
+            "Age": 20   
+        },
+        {
+            "Name": "Hera",
+            "Age": 19
+        },
+        {
+            "Name": "Viviane",
+            "Age": 51
+        }
+    ]
+}
